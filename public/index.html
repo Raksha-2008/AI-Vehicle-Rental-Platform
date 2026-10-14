@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RideEarn | AI Vehicle Rental</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#">🚘 Ride<span>Earn</span></a>
+    <nav><a href="#vehicles">Explore</a><a href="#list">List a vehicle</a><a href="#earnings">Earnings</a><a href="#ai">AI Price</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">RENT SMART. EARN MORE.</p>
+        <h1>Your next ride.<br><span>Someone's earning.</span></h1>
+        <p class="hero-text">Find a ride for your next trip or turn your unused vehicle into extra income.</p>
+        <div class="hero-actions"><a class="btn primary" href="#vehicles">Find a vehicle</a><a class="btn light" href="#list">Earn with your vehicle</a></div>
+      </div>
+      <div class="hero-card"><div class="hero-icon">🚙</div><p>Make every ride count</p><strong>Rent • Ride • Earn</strong><small>One simple platform for everyone</small></div>
+    </section>
+
+    <section class="section" id="vehicles">
+      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR RIDE</p><h2>Available vehicles</h2></div><button class="btn light" id="refreshBtn">Refresh</button></div>
+      <div class="filters">
+        <input id="searchInput" placeholder="Search vehicle or location...">
+        <select id="typeFilter"><option>All</option><option>Scooter</option><option>Bike</option><option>Car</option><option>SUV</option></select>
+        <button class="btn primary" id="searchBtn">Search</button>
+      </div>
+      <div id="vehicleGrid" class="vehicle-grid"><p>Loading vehicles...</p></div>
+    </section>
+
+    <section class="section split" id="list">
+      <div><p class="eyebrow">FOR VEHICLE OWNERS</p><h2>Let your vehicle earn while you rest.</h2><p class="muted">Add your vehicle details. Customers can discover it and book it through the platform.</p><div class="mini-stats"><div><strong>01</strong><span>Add a vehicle</span></div><div><strong>02</strong><span>Receive bookings</span></div><div><strong>03</strong><span>Track earnings</span></div></div></div>
+      <form id="vehicleForm" class="panel">
+        <h3>List your vehicle</h3>
+        <label>Vehicle name<input name="name" required placeholder="e.g. Honda Activa"></label>
+        <div class="two-col"><label>Type<select name="type"><option>Scooter</option><option>Bike</option><option>Car</option><option>SUV</option></select></label><label>Daily price (₹)<input name="pricePerDay" type="number" min="1" required placeholder="500"></label></div>
+        <label>Location<input name="location" required placeholder="e.g. Mangaluru"></label>
+        <label>Image URL (optional)<input name="image" type="url" placeholder="https://..."></label>
+        <label>Description<textarea name="description" placeholder="Short vehicle description"></textarea></label>
+        <label>Owner name<input name="ownerName" placeholder="Your name"></label>
+        <button class="btn primary full" type="submit">Add vehicle</button>
+        <p id="vehicleMessage" class="message"></p>
+      </form>
+    </section>
+
+    <section class="section split" id="ai">
+      <div><p class="eyebrow">SMART PRICING</p><h2>Get an AI-assisted price estimate.</h2><p class="muted">Use vehicle type, age, and demand to estimate a suggested daily rental price. This starter version uses a simple demo formula.</p></div>
+      <form id="aiForm" class="panel">
+        <h3>Price estimator</h3>
+        <label>Vehicle type<select name="type"><option>Bike</option><option>Scooter</option><option>Car</option><option>SUV</option></select></label>
+        <label>Vehicle age (years)<input name="age" type="number" min="0" max="30" value="3"></label>
+        <label>Demand<select name="demand"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label>
+        <button class="btn primary full" type="submit">Estimate price</button>
+        <div id="priceResult" class="result-box">Your suggested price will appear here.</div>
+      </form>
+    </section>
+
+    <section class="section" id="earnings">
+      <div class="section-heading"><div><p class="eyebrow">OWNER DASHBOARD</p><h2>Booking and earnings overview</h2></div><button id="loadEarningsBtn" class="btn light">Update summary</button></div>
+      <div class="earnings-grid"><div class="earning-card"><span>Estimated total earnings</span><strong id="totalEarnings">₹0</strong></div><div class="earning-card"><span>Confirmed bookings</span><strong id="bookingCount">0</strong></div></div>
+      <p id="earningsNote" class="muted small">Earnings are calculated from demo bookings. No payment processing is included.</p>
+      <div class="panel"><h3>Recent bookings</h3><div id="bookingList" class="booking-list">No bookings yet.</div></div>
+    </section>
+
+    <section class="section compact" id="register">
+      <div class="panel register-panel"><div><p class="eyebrow">JOIN RIDE EARN</p><h2>Create a demo profile</h2><p class="muted">This starter project stores a basic profile only. It does not include password-based authentication.</p></div>
+        <form id="registerForm"><label>Full name<input name="name" required></label><label>Email<input name="email" type="email" required></label><label>Role<select name="role"><option>Customer</option><option>Owner</option><option>Admin</option></select></label><button class="btn primary full">Register</button><p id="registerMessage" class="message"></p></form>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#">🚘 Ride<span>Earn</span></a><p>Student project starter • AI-assisted vehicle rental and earnings</p></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
